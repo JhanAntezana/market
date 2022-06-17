@@ -2,6 +2,7 @@ package com.jhan.JAmarket.persistence.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "compras")
@@ -17,7 +18,12 @@ public class Compra {
     private String medioPaga;
     private String comentario;
     private String estado;
+    @ManyToOne//relacion de n a 1
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
 
+    @OneToMany(mappedBy = "compra")//relacion 1 a n
+    private List<ComprasProducto> comprasProducto;
     public Integer getIdCompra() {
         return idCompra;
     }

@@ -1,6 +1,7 @@
 package com.jhan.JAmarket.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "productos")
@@ -19,6 +20,13 @@ public class Producto {
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
     private Boolean estado;
+    //relacion de n a 1 entre Productos y Categoria
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Categoria categoria;
+    //ESTA RELACION NO ES NECESARIO, pues es una relacion que no me damucho valor
+    @OneToMany(mappedBy = "producto")
+    private List<ComprasProducto> comprasProductos;
 
     public Integer getIdProducto() {
         return idProducto;
