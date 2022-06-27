@@ -2,7 +2,6 @@ package com.jhan.JAmarket.persistence.mapper;
 
 import com.jhan.JAmarket.domain.Product;
 import com.jhan.JAmarket.persistence.entity.Producto;
-import org.apache.catalina.LifecycleState;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -22,7 +21,7 @@ public interface ProductMapper {
             @Mapping(source = "estado", target = "active"),
             @Mapping(source = "categoria", target = "category"),
     })
-    Product toProduct(Producto producto);
+    Product toProduct(Object producto);
     //no se implementa el @Mappings, ya que internamente MapStruct entiende que esta se comportara igual que la anterior ya que es el mismo tipo de conversión
     List<Product> toProducts(List<Producto> productos);
     @InheritInverseConfiguration
