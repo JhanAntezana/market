@@ -3,19 +3,19 @@ package com.jhan.JAmarket.domain;
 import javax.persistence.Column;
 
 public class Product {
-    private Integer productId;
+    private int productId;
     private String name;
-    private Integer categoriId;
-    private Float price;
-    private Integer stock;
-    private Boolean active;
+    private int categoryId;
+    private float price;
+    private int stock;
+    private boolean active;
     private Category category;
 
-    public Integer getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -27,35 +27,35 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getCategoriId() {
-        return categoriId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoriId(Integer categoriId) {
-        this.categoriId = categoriId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public Float getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public Integer getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

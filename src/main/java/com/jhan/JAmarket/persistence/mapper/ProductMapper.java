@@ -21,7 +21,7 @@ public interface ProductMapper {
             @Mapping(source = "estado", target = "active"),
             @Mapping(source = "categoria", target = "category"),
     })
-    Product toProduct(Object producto);
+    Product toProduct(Producto producto);
     //no se implementa el @Mappings, ya que internamente MapStruct entiende que esta se comportara igual que la anterior ya que es el mismo tipo de conversión
     List<Product> toProducts(List<Producto> productos);
     @InheritInverseConfiguration

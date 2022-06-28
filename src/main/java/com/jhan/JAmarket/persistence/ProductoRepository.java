@@ -3,13 +3,11 @@ package com.jhan.JAmarket.persistence;
 import com.jhan.JAmarket.domain.Product;
 import com.jhan.JAmarket.domain.repository.ProductRepository;
 import com.jhan.JAmarket.persistence.crud.ProductoCrudRepository;
-import com.jhan.JAmarket.persistence.entity.Compra;
 import com.jhan.JAmarket.persistence.entity.Producto;
 import com.jhan.JAmarket.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +15,7 @@ import java.util.Optional;
 public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
+    @Autowired
     private ProductMapper productMapper;
     @Autowired
     public List<Product> getAll(){
@@ -42,15 +41,14 @@ public class ProductoRepository implements ProductRepository {
     }
 
     @Override
-    public Product save(Product product) {
-        return productMapper.toProduct(productoCrudRepository.save(productMapper.toProducto(product)));
+    public List<Product> getProductsFromPriceGreaterThan(Float price) {
+        List<Producto> productos = productoCrudRepository.findByPrecioVentaGreaterThan(price);
+        return productMapper.toProducts(productos);
     }
 
-    public List<Compra> getComprasUltimoMes(LocalDateTime fechaInicio, LocalDateTime fechaFin){
-        return productoCrudRepository.findByFechaBetween(fechaInicio, fechaFin);
-    }
-    public List<Producto> getProductosCostosos(Float precioVenta){
-        return productoCrudRepository.findByPrecioVentaGreaterThan(precioVenta);
+    @Override
+    public Product save(Product product) {
+        return productMapper.toProduct(productoCrudRepository.save(productMapper.toProducto(product)));
     }
     @Override
     public void delete(int productId){

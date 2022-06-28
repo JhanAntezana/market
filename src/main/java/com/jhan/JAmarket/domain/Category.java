@@ -1,9 +1,9 @@
 package com.jhan.JAmarket.domain;
 
 public class Category {
-    private int categoryId;
+    private Integer categoryId;
     private String category;
-    private boolean active;
+    private Boolean active;
 
     public int getCategoryId() {
         return categoryId;

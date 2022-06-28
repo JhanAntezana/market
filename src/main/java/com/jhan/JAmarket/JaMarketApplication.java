@@ -8,7 +8,7 @@ public class JaMarketApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JaMarketApplication.class, args);
-		System.out.println("hola mundo, soy Jhan :hot");
+		System.out.println("hola mundo, soy Jhan");
 	}
 
 }

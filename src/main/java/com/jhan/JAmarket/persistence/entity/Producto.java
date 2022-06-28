@@ -24,6 +24,7 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
+
     //ESTA RELACION NO ES NECESARIO, pues es una relacion que no me damucho valor
     @OneToMany(mappedBy = "producto")
     private List<ComprasProducto> comprasProductos;
@@ -82,5 +83,13 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
