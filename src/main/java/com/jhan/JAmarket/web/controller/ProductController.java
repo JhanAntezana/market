@@ -37,15 +37,19 @@ public class ProductController {
     }
     @PostMapping("/save")
     public ResponseEntity<Product> save (@RequestBody Product product){
-        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED) ;
+        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete (@PathVariable("id") int productId){
-        if (productService.delete(productId)){
+        /*if (productService.delete(productId)){
             return new ResponseEntity(HttpStatus.OK);
         }else{
             return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
+        }*/
+        //el equivalente con el operador ternario
+        return new ResponseEntity(this.productService.delete(productId)
+                ? HttpStatus.OK
+                : HttpStatus.NOT_FOUND);
     }
 
 }
